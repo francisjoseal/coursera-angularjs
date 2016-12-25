@@ -1,0 +1,10 @@
+{
+  "name": "angularApp",
+  "description": "This is my angular app for the Coursera course",
+  "version": "0.0.1",
+  "license": "Francis Jose",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.6"
+  }
+}
