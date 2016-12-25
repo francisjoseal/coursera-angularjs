@@ -1,7 +1,9 @@
 /**
  * Created by falappat on 12/24/16.
  */
-angular.module("LunchCheck", []).controller('LunchCheckController', function ($scope) {
+angular.module("LunchCheck", []).controller('LunchCheckController', LunchCheckController);
+LunchCheckController.$inject = ['$scope'];
+function LunchCheckController($scope) {
     $scope.lunchList = "";
     $scope.message = "";
     $scope.color = "";
