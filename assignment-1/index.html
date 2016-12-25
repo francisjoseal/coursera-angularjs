@@ -18,14 +18,15 @@
                     ng-style="{borderColor:color}"
              placeholder="list comma separated dishes you usually have for lunch"
              class="form-control">
-             <span style="color: #a94442; font-style: italic">Note: item 1, item2, ,item3 is considered as 3 items!</span>
+             <span style="color: #a94442; font-style: italic">Note:We do NOT consider an empty item, i.e., , , as an item towards to the count!! 
+You can also enter as many commas as you wish, in the beginning, or the end, they won't count as items!!</span><br><span> Ex:item 1, item2, ,item3 is considered as 3 items!</span>
          </div>
          <div class="form-group">
              <button class="btn btn-default" ng-click="checkLunch(lunchList)">Check If Too Much</button>
          </div>
          <div class="form-group message">
              <span ng-style="{color:color}">{{message}}</span></br>
-             <span ng-if="color=='red'">Note: ,, is considered as an empty item! </span>
+<!--              <span ng-if="color=='red'">Note: ,, is considered as an empty item! </span> -->
          </div>
    </div>
 <script src="../bower_components/angular/angular.min.js"></script>
