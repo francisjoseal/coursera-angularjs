@@ -33,4 +33,4 @@ function LunchCheckController($scope) {
             $scope.color = "red";
         }
     };
-});
+};
