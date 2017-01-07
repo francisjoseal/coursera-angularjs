@@ -13,6 +13,7 @@
         var narrow = this;
         narrow.searchTerm = "";
         narrow.found = [];
+        narrow.displayError = false;
 
         narrow.getItems = function (searchTerm) {
             //prevent unwanted requests by check
@@ -21,9 +22,16 @@
                 promise.then(function (response) {
                     //store the filtered data in the scope variable
                     narrow.found = response;
+                    //show error message if no results found
+                    if(narrow.found.length == 0){
+                        narrow.displayError = true;
+                    }
                 }).catch(function (error) {
                     console.log("Error while getting data from webservice!", error);
                 })
+            }else{
+                //show error message if user clicks button without giving search term
+                narrow.displayError = true;
             }
         };
 
@@ -58,13 +66,11 @@
             templateUrl: "itemsloaderindicator.template.html",
             scope:{
                 displayItems: '<',
-                onRemove: '&',
-                searchTerm: '<'
+                onRemove: '&'
             },
             controller: ItemLoaderCtrl,
             controllerAs: 'narrowItCtrl',
-            bindToController: true,
-            link: ItemLoaderLink
+            bindToController: true
         };
         return ddo;
     }
@@ -72,34 +78,6 @@
     function ItemLoaderCtrl() {
         var narrowItCtrl = this;
 
-        narrowItCtrl.showError = function () {
-            return (narrowItCtrl.displayItems.length == 0) ? true:false;
-        }
-
-    }
-
-    function ItemLoaderLink(scope, element, attributes) {
-        scope.$watch('narrowItCtrl.showError()',function (newVal,oldVal) {
-            console.log("Old value: ", oldVal);
-            console.log("New value: ", newVal);
-            if(newVal == true && attributes){
-                displayError();
-            }else{
-                hideError();
-            }
-        });
-        function displayError() {
-            var warningElem = element.find("div");
-            console.log('displayError:',warningElem);
-            warningElem.css('display', 'block');
-        }
-
-
-        function hideError() {
-            var warningElem = element.find("div");
-            console.log('hideError:',warningElem);
-            warningElem.css('display', 'none');
-        }
     }
 
 })();
