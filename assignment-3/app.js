@@ -8,8 +8,7 @@
         .directive('foundItems',FoundItems)
         .service('MenuSearchService',MenuSearchService);
 
-    NarrowItDownController.$inject = ['$http', 'MenuSearchService'];
-    function NarrowItDownController($http, MenuSearchService) {
+    function NarrowItDownController(MenuSearchService) {
         var narrow = this;
         narrow.searchTerm = "";
         narrow.found = [];
@@ -46,7 +45,7 @@
 
     }
 
-    MenuSearchService.$inject = ['$http', '$filter'];
+    MenuSearchService.$inject = ['$http'];
     function MenuSearchService($http) {
         var service = this;
 

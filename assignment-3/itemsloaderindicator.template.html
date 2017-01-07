@@ -13,9 +13,7 @@
             <td class="col-sm-1">{{item.short_name}}</td>
             <td class="col-sm-6">{{item.description}}</td>
             <td class="col-sm-2">
-                <div class="form-group narrow-button">
-                    <button class="btn btn-primary" ng-click="narrowItCtrl.onRemove({'index':$index})">Don't want this one!</button>
-                </div>
+                <button class="btn btn-primary" style="align-self:center" ng-click="narrowItCtrl.onRemove({'index':$index})">Don't want this one!</button>
             </td>
         </tr>
     </tbody>
