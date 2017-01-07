@@ -16,6 +16,8 @@
         narrow.displayError = false;
 
         narrow.getItems = function (searchTerm) {
+            //clear the search array so previous result is not shown with the 'Nothing Found' message
+            narrow.found = [];
             //prevent unwanted requests by check
             if (searchTerm) {
                 var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
@@ -25,6 +27,9 @@
                     //show error message if no results found
                     if(narrow.found.length == 0){
                         narrow.displayError = true;
+                    }else{
+                        //clear error message
+                        narrow.displayError = false;
                     }
                 }).catch(function (error) {
                     console.log("Error while getting data from webservice!", error);
