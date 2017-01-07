@@ -1,23 +1,24 @@
+<div class="error">Nothing Found!</div>
+<table id="itemsTable" ng-show="narrowItCtrl.displayItems.length > 0" class="table-responsive">
+    <thead>
+        <tr>
+            <th class="col-sm-3">Name</th>
+            <th class="col-sm-1">Short Name</th>
+            <th class="col-sm-6">Description</th>
+            <th class="col-sm-2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in narrowItCtrl.displayItems track by $index">
+            <td class="col-sm-3">{{item.name}}</td>
+            <td class="col-sm-1">{{item.short_name}}</td>
+            <td class="col-sm-6">{{item.description}}</td>
+            <td class="col-sm-2">
+                <div class="form-group narrow-button">
+                    <button class="btn btn-primary" ng-click="narrowItCtrl.onRemove({'index':$index})">Don't want this one!</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
 
-    <table id="itemsTable" ng-show="narrowItCtrl.displayItems" class="table-responsive">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Short Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="item in narrowItCtrl.displayItems track by $index">
-                <td>{{item.name}}</td>
-                <td>{{item.short_name}}</td>
-                <td>{{item.description}}</td>
-                <td>
-                    <div class="form-group narrow-button">
-                        <button class="btn btn-primary" ng-click="narrowItCtrl.onRemove({'index':$index})">Click to remove this item!</button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-
-    </table>
+</table>
