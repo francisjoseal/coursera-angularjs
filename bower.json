@@ -5,6 +5,7 @@
   "license": "Francis Jose",
   "private": true,
   "dependencies": {
-    "angular": "~1.6"
+    "angular": "~1.6",
+    "angular-ui-router": "^0.3.2"
   }
 }

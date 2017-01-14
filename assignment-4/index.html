@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Menu App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../resources/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="../resources/styles/styles.css">
+      <style>
+          .custom{
+              clear: both;
+              display: block;
+          }
+          #itemsTable{
+              width: 70%;
+          }
+          #itemsTable tr{
+              border-bottom: solid 1px;
+              border-top: solid 1px;
+          }
+          .error{
+              color: red;
+              clear: both;
+              font-size: large;
+          }
+      </style>
+  </head>
+<body ng-app="MenuApp">
+   <div ng-controller="NarrowItDownController as narrowItCtrl" class="container">
+    <h1>Welcome to our Restaurant!</h1>
+
+    <div class="form-group">
+            <input type="text" placeholder="Enter a search term" ng-model="narrowItCtrl.searchTerm" class="form-control">
+            <div class="form-group narrow-button">
+                <button class="btn btn-primary" ng-click="narrowItCtrl.getItems(narrowItCtrl.searchTerm)">Narrow It Down For Me!</button>
+            </div>
+    </div>
+<br>
+       <div class="error" ng-show="narrowItCtrl.displayError">Nothing Found!</div>
+       <div class="custom">
+           <found-items display-items="narrowItCtrl.found" on-remove="narrowItCtrl.removeItemAtIndex(index)"></found-items>
+       </div>
+  </div>
+   <script src="../bower_components/angular/angular.min.js"></script>
+   <script src="app.js"></script>
+</body>
+</html>
