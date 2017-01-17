@@ -1,47 +1,54 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <title>Menu App</title>
+<html ng-app="MenuApp" lang="en">
+<head>
+    <title>Module 4 - Assignment </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../resources/styles/bootstrap.min.css">
-    <link rel="stylesheet" href="../resources/styles/styles.css">
-      <style>
-          .custom{
-              clear: both;
-              display: block;
-          }
-          #itemsTable{
-              width: 70%;
-          }
-          #itemsTable tr{
-              border-bottom: solid 1px;
-              border-top: solid 1px;
-          }
-          .error{
-              color: red;
-              clear: both;
-              font-size: large;
-          }
-      </style>
-  </head>
-<body ng-app="MenuApp">
-   <div ng-controller="NarrowItDownController as narrowItCtrl" class="container">
-    <h1>Welcome to our Restaurant!</h1>
+    <style>
+        body {
+            font-size: 1.2em;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+        .loading-icon {
+            position: absolute;
+            left: 45%;
+            top: 35px;
+        }
+        li[ui-sref]:hover {
+            display: inline-block;
+            cursor: pointer;
+            border: solid blue 1px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    </style>
+</head>
+<body>
 
-    <div class="form-group">
-            <input type="text" placeholder="Enter a search term" ng-model="narrowItCtrl.searchTerm" class="form-control">
-            <div class="form-group narrow-button">
-                <button class="btn btn-primary" ng-click="narrowItCtrl.getItems(narrowItCtrl.searchTerm)">Narrow It Down For Me!</button>
-            </div>
-    </div>
-<br>
-       <div class="error" ng-show="narrowItCtrl.displayError">Nothing Found!</div>
-       <div class="custom">
-           <found-items display-items="narrowItCtrl.found" on-remove="narrowItCtrl.removeItemAtIndex(index)"></found-items>
-       </div>
-  </div>
-   <script src="../bower_components/angular/angular.min.js"></script>
-   <script src="app.js"></script>
+<h1>Welcome to Our Restaurant</h1>
+
+<ui-view></ui-view>
+<loading-spinner></loading-spinner>
+<script src="../lib/angular/angular.min.js"></script>
+<script src="../lib/angular-ui-router/angular-ui-router.min.js"></script>
+<script src="src/menuapp/menuapp.module.js"></script>
+<script src="src/data/data.module.js"></script>
+<script src="src/spinner/spinner.module.js"></script>
+
+<script src="src/routes.js"></script>
+
+<script src="src/menuapp/categories.component.js"></script>
+<script src="src/menuapp/categories.controller.js"></script>
+
+<script src="src/menuapp/menuitems.component.js"></script>
+<script src="src/menuapp/menuitems.controller.js"></script>
+
+<script src="src/data/menudata.service.js"></script>
+
+<script src="src/spinner/loadingspinner.component.js"></script>
+
 </body>
 </html>
